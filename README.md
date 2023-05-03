@@ -101,5 +101,9 @@ usage: ros2 topic echo  [-h]
                         [--no-str]
                         topic_name [message_type]
 
+## What we want:
+![Alt text](image.png)
+
 ### See also:
 * https://answers.ros.org/question/403872/how-convert-sensor_msgspointcloud2-message-to-3d-coordinate/?answer=403892
+* http://lidarview.com/
