@@ -100,3 +100,6 @@ usage: ros2 topic echo  [-h]
                         [--no-arr]
                         [--no-str]
                         topic_name [message_type]
+
+### See also:
+* https://answers.ros.org/question/403872/how-convert-sensor_msgspointcloud2-message-to-3d-coordinate/?answer=403892
