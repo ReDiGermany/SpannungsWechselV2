@@ -2,50 +2,18 @@ import glob
 import numpy as np
 import open3d as o3d
 
+from utils.parseFile import getParsedFiles
+
+
 pcd = o3d.geometry.PointCloud()
-
-
 vis = o3d.visualization.Visualizer()
 vis.create_window()
 
-def parseFile(name):
-    items = []
-
-    with open(name) as file:
-        lines = file.read().split("\n")
-        if len(lines) > 10:
-            items = []
-            for line in lines:
-                l = line.split(" ")
-                for idx,n in enumerate(l):
-                    l[idx] = int(n)
-                items.append(l)
-    return items
-
-def showFile(name):
-    items = parseFile(name)
-    print(len(items))
-    pcd.points = o3d.utility.Vector3dVector(items)
-    # o3d.visualization.draw_geometries([pcd])
-    pcd.rotate(pcd.get_rotation_matrix_from_xyz((1.5 * np.pi, 0, 1.1 * np.pi)), center=(0,0,0))
-
-    vis.add_geometry(pcd)
-    vis.poll_events()
-    vis.update_renderer()
-    vis.run()
-
 dir = glob.glob("data\\raw\\*.point")
+# Sort by filename like data\\raw\\123-133.point - windows shows 0,1,11,12,13,2,21 etc.
+dir.sort(key=lambda el: int(el.split(".")[0].split("-")[1]))
 
-def take(el):
-    n = el.split(".")[0].split("-")[1]
-    return int(n)
-
-dir.sort(key=take)
-
-files = []
-for file in dir:
-    data = parseFile(file)
-    files.append(data)
+files = getParsedFiles(dir)
 
 for items in files:
     pcd.points = o3d.utility.Vector3dVector(items)
