@@ -50,7 +50,8 @@ for file in dir:
 for items in files:
     pcd.points = o3d.utility.Vector3dVector(items)
     pcd.rotate(pcd.get_rotation_matrix_from_xyz((1.5 * np.pi, 0, 1.1 * np.pi)), center=(0,0,0))
-
+    opt = vis.get_render_option()
+    opt.background_color = np.asarray([0, 0, 0])
     vis.add_geometry(pcd)
     vis.poll_events()
     vis.update_renderer()
