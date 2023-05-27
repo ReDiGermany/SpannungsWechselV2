@@ -4,3 +4,4 @@ data/*
 *.log
 *.csv
 *.zip
+*.pyc
