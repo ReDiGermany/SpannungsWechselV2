@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def isVisible(item,visible_area):
     return item < visible_area[1] and item > visible_area[0]
 
@@ -13,6 +16,7 @@ def inVisibleArea(item,visible_area):
     return ret
 
 def parseFile(name,visible_area=[]):
+    # items = np.array([])
     items = []
 
     with open(name) as file:
@@ -20,11 +24,14 @@ def parseFile(name,visible_area=[]):
         if len(lines) > 10:
             items = []
             for line in lines:
-                l = line.split(" ")
-                for idx,n in enumerate(l):
-                    l[idx] = float(n)
-                if inVisibleArea(l,visible_area):
-                    items.append(l)
+                # l = np.array([0.0,0.0,0.0])
+                l = [0.0,0.0,0.0]
+                d = line.split(" ")
+                for idx,n in enumerate(d):
+                    l[idx] = int(round(float(n)*4*100))
+                    # l[idx] = float(n)
+                # if inVisibleArea(l,visible_area):
+                items.append(l)
     return items
 
 def getParsedFiles(dir,visible_area=[]):
