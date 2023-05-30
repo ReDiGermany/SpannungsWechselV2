@@ -88,6 +88,50 @@ def doDings(dir,n):
     print(n,dir[n])
     data = parseFile(dir[n],visible_area)
     print(len(data))
+
+    updated_data = []
+    for x,y,z in data:
+        # if x > -3 and x < 3 and y < 10 and y > 1.5 and z < 0:
+        if x > -3*4*100 and x < 3*4*100 and y < 10*4*100:
+        # if x > -3*4 and x < 3*4 and y < 10*4 and y > 1.5*4 and z < 0:
+            p = [x,y,z]
+            updated_data.append(p)
+    data = updated_data
+    print(len(data))
+
+    x_min = [999999,999999,999999]
+    x_max = [-999999,-999999,-999999]
+    y_min = [999999,999999,999999]
+    y_max = [-999999,-999999,-999999]
+    z_min = [999999,999999,999999]
+    z_max = [-999999,-999999,-999999]
+    for item in data:
+        if item[0] < x_min[0]:
+            x_min = item
+        if item[0] > x_max[0]:
+            x_max = item
+
+        if item[1] < y_min[1]:
+            y_min = item
+        if item[1] > y_max[1]:
+            y_max = item
+            
+        if item[2] < z_min[2]:
+            z_min = item
+        if item[2] > z_max[2]:
+            z_max = item
+    
+    print(f"x_min={x_min}")
+    print(f"x_max={x_max}")
+
+    print(f"y_min={y_min}")
+    print(f"y_max={y_max}")
+
+    print(f"z_min={z_min}")
+    print(f"z_max={z_max}")
+
+
+    print(len(data))
     # print("data[0] =",data[0])
     z_idx = int(np.argmin(np.var(data, axis = 0)))
     # print("z_idx =",z_idx)
