@@ -8,8 +8,8 @@ import open3d as o3d
 
 from utils.parseFile import  parseFile
 
-# dir = glob.glob("C:\\Users\\suppo\\Documents\\spannungswechsel logs\\logs-1685189669\\logs\\*.xyz")
-dir = glob.glob("G:\\spannungswechsel\\logs\\logs-1685189669\\logs\\*.xyz")
+dir = glob.glob("C:\\Users\\suppo\\Documents\\spannungswechsel logs\\logs-1685189669\\logs\\*.xyz")
+# dir = glob.glob("G:\\spannungswechsel\\logs\\logs-1685189669\\logs\\*.xyz")
 
 pcd = o3d.geometry.PointCloud()
 vis = o3d.visualization.Visualizer()
@@ -80,7 +80,7 @@ def dings(data):
     # print(miny)
     # show(arr)
     narr = []
-    start = arr[2]
+    # start = arr[2]
     # padding = 0.8
     # for i in range(round(len(arr)/16)):
         # dat = arr[i*16:(i+1)*16]
